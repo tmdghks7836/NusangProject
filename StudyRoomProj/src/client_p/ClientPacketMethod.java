@@ -17,7 +17,6 @@ class MethLoginAck implements ClientPacketMethod {
 
 		ScLoginAck ack = (ScLoginAck) packet;
 		if (ack.eResult == EResult.SUCCESS) {
-
 		}
 	}
 }

@@ -16,7 +16,7 @@ public class ProductMain {
 
 	void RoomSetting() {
 		for (int i = 0; i < 20; i++) {
-			roomList.add(new PrivateRoomProduct(""));
+			roomList.add(new PrivateRoomProduct());
 		}
 		for (int i = 0; i < 20; i++) {
 			roomList.add(new PublicRoomProduct());

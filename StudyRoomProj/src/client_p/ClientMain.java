@@ -79,7 +79,7 @@ class PacketProccess extends Thread {
 	ObjectOutputStream dos;
 
 	InputStream is;
-	ObjectInputStream dis;
+	ObjectInputStream ois;
 	PacketMap pMap = new PacketMap();
 
 	PacketProccess(Socket socket) {
@@ -88,7 +88,7 @@ class PacketProccess extends Thread {
 			os = socket.getOutputStream();
 			dos = new ObjectOutputStream(os);
 			is = socket.getInputStream();
-			dis = new ObjectInputStream(is);
+			ois = new ObjectInputStream(is);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -103,7 +103,7 @@ class PacketProccess extends Thread {
 				sleep(1000);
 				if (is.available() > 0) {
 
-					pMap.receivePacket(this, (PacketBase) dis.readObject());
+					pMap.receivePacket(this, (PacketBase) ois.readObject());
 
 				}
 			}
