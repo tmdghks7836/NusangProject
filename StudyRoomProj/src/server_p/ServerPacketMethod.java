@@ -1,8 +1,12 @@
 package server_p;
 
 import packet_p.*;
-import packet_p.model.ack_p.*;
-import packet_p.model.syn_p.*;
+import packet_p.model.EResult;
+import packet_p.model.PacketBase;
+import packet_p.model.Server_p.ack_p.ScLoginAck;
+import packet_p.model.Server_p.ack_p.ScSignInUpAck;
+import packet_p.model.client_p.syn_p.CsLoginSyn;
+import packet_p.model.client_p.syn_p.CsSignUpSyn;
 import db_p.DBProccess;
 import db_p.*;
 

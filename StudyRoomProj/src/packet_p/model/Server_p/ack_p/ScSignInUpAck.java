@@ -1,9 +1,9 @@
-package packet_p.model.ack_p;
+package packet_p.model.Server_p.ack_p;
 
 import java.util.UUID;
 
-import packet_p.EResult;
-import packet_p.SPacketBase;
+import packet_p.model.EResult;
+import packet_p.model.SPacketBase;
 
 public class ScSignInUpAck extends SPacketBase {
 

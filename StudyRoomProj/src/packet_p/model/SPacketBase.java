@@ -1,4 +1,4 @@
-package packet_p;
+package packet_p.model;
 
 import java.util.UUID;
 
