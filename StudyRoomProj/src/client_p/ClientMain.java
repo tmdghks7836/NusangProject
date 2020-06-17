@@ -101,7 +101,7 @@ class PacketProccess extends Thread {
 	public void run() {
 		try {
 
-			while (socket.isClosed() && !socket.isConnected()) {
+			while (!socket.isClosed() && socket.isConnected()) {
 
 				sleep(1000);
 				if (is.available() > 0) {
