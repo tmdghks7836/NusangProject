@@ -8,17 +8,17 @@ import server_p.packet_p.ack_p.ScSignInUpAck;
 
 public class PacketMap {
 
-	HashMap<Class, ClientPacketMethod> map = new HashMap<Class, ClientPacketMethod>();
+	HashMap<Class, Receivable> map = new HashMap<Class, Receivable>();
 
 	PacketMap() {
 
-		map.put(ScLoginAck.class, new MethLoginAck());
-		map.put(ScSignInUpAck.class, new MethSignUpAck());
+		map.put(ScLoginAck.class, new ReceiveLoginAck());
+		map.put(ScSignInUpAck.class, new ReceiveSignUpAck());
 	}
 
 	void receivePacket(PacketProccess pClient, PacketBase packet) {
 
 		System.out.println("CLIENT RECEIVE : " + packet.getClass());
-		map.get(packet.getClass()).action(packet);
+		map.get(packet.getClass()).receive(packet);
 	}
 }

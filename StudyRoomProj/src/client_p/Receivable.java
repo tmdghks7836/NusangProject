@@ -7,24 +7,25 @@ import server_p.packet_p.ack_p.ScSignInUpAck;
 
 //클라이언트가 처리할 패킷 메소드 
 
-public interface ClientPacketMethod {
+public interface Receivable {
 
-	void action(PacketBase packet);
+	void receive(PacketBase packet);
 }
 
-class MethLoginAck implements ClientPacketMethod {
+class ReceiveLoginAck implements Receivable {
 	@Override
-	public void action(PacketBase packet) {
+	public void receive(PacketBase packet) {
 
 		ScLoginAck ack = (ScLoginAck) packet;
 		if (ack.eResult == EResult.SUCCESS) {
+			
 		}
 	}
 }
 
-class MethSignUpAck implements ClientPacketMethod {
+class ReceiveSignUpAck implements Receivable {
 	@Override
-	public void action(PacketBase packet) {
+	public void receive(PacketBase packet) {
 
 		ScSignInUpAck ack = (ScSignInUpAck) packet;
 		
