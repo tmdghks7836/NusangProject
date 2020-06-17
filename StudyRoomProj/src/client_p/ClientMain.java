@@ -60,15 +60,12 @@ class MyServer extends Thread {
 class TestThread extends Thread {
 	@Override
 	public void run() {
-		while (true) {
-			try {
-				sleep(1000);
-				CsSignUpSyn packet = new CsSignUpSyn("이승환", "tmdghks", "4521", "940928", "010-2495-7784");
-				MyServer.getInstance().sendPacket(packet);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
+		try {
+			sleep(1000);
+			CsSignUpSyn packet = new CsSignUpSyn("이승환", "tmdghks", "4521", "940928", "010-2495-7784");
+			MyServer.getInstance().sendPacket(packet);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 }
@@ -129,7 +126,8 @@ class PacketProccess extends Thread {
 
 			System.out.println("CLIENT SEND : " + packet.getClass());
 			dos.writeObject(packet);
-
+			dos.flush();
+			dos.reset();
 		} catch (IOException e) {
 			System.out.println("알수 없는 에러");
 			e.printStackTrace();

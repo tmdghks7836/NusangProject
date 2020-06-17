@@ -124,6 +124,7 @@ class PacketClient extends Thread {
 			System.out.println("SERVER SEND: " + packet.getClass());
 			dos.writeObject(packet);
 			dos.flush();
+			dos.reset();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
