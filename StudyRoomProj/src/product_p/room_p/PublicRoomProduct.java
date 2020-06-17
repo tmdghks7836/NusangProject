@@ -1,5 +1,5 @@
 package product_p.room_p;
 
-public class GroupRoomProduct {
+public class PublicRoomProduct extends RoomProduct {
 
 }

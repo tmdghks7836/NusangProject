@@ -1,5 +1,7 @@
 package product_p.room_p;
 
-public class PrivateRoomProduct {
+import product_p.ProductData;
+
+public class PrivateRoomProduct extends RoomProduct {
 
 }
