@@ -1,7 +1,7 @@
 package client_p;
 
-import packet_p.model.EResult;
-import packet_p.model.PacketBase;
+import packet_p.EResult;
+import packet_p.PacketBase;
 import packet_p.model.ack_p.*;
 
 //클라이언트가 처리할 패킷 메소드 

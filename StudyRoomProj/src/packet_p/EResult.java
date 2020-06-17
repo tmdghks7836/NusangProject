@@ -1,4 +1,4 @@
-package packet_p.model;
+package packet_p;
 
 
 public enum EResult {

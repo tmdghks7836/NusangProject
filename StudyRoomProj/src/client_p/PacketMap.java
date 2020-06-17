@@ -2,7 +2,7 @@ package client_p;
 
 import java.util.HashMap;
 
-import packet_p.model.PacketBase;
+import packet_p.PacketBase;
 import packet_p.model.ack_p.*;
 
 public class PacketMap {

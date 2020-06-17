@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.UUID;
 
-import packet_p.model.PacketBase;
+import packet_p.PacketBase;
 import packet_p.model.syn_p.*;
 
 public class ClientMain {

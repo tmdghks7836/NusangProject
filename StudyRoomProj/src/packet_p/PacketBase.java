@@ -1,4 +1,4 @@
-package packet_p.model;
+package packet_p;
 
 import java.io.Serializable;
 import java.util.UUID;

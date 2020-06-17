@@ -2,7 +2,7 @@ package server_p;
 
 import java.util.HashMap;
 
-import packet_p.model.*;
+import packet_p.*;
 import packet_p.model.syn_p.*;
 
 public class PacketMap {

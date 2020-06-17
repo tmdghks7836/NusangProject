@@ -1,12 +1,10 @@
 package server_p;
 
-import packet_p.model.EResult;
+import packet_p.*;
 import packet_p.model.ack_p.*;
 import packet_p.model.syn_p.*;
 import db_p.DBProccess;
 import db_p.*;
-import packet_p.model.*;
-//서버가 처리할 패킷 메소드 
 
 public interface ServerPacketMethod {
 

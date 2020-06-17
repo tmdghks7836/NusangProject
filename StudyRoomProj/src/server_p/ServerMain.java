@@ -10,7 +10,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.UUID;
-import packet_p.model.*;
+
+import packet_p.*;
 
 public class ServerMain {
 
