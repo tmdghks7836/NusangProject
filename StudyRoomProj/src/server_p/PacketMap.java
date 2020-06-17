@@ -2,10 +2,9 @@ package server_p;
 
 import java.util.HashMap;
 
-import packet_p.*;
-import packet_p.model.PacketBase;
-import packet_p.model.client_p.syn_p.CsLoginSyn;
-import packet_p.model.client_p.syn_p.CsSignUpSyn;
+import client_p.packet_p.syn_p.CsLoginSyn;
+import client_p.packet_p.syn_p.CsSignUpSyn;
+import packetBase_p.*;
 
 public class PacketMap {
 

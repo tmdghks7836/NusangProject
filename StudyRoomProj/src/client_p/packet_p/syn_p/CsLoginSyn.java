@@ -1,6 +1,6 @@
-package packet_p.model.client_p.syn_p;
+package client_p.packet_p.syn_p;
 
-import packet_p.model.PacketBase;
+import packetBase_p.PacketBase;
 
 public class CsLoginSyn extends PacketBase {
 

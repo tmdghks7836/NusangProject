@@ -8,8 +8,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.UUID;
 
-import packet_p.model.PacketBase;
-import packet_p.model.client_p.syn_p.CsSignUpSyn;
+import client_p.packet_p.syn_p.CsSignUpSyn;
+import packetBase_p.PacketBase;
 
 public class ClientMain {
 
@@ -62,7 +62,7 @@ class TestThread extends Thread {
 	public void run() {
 		try {
 			sleep(1000);
-			CsSignUpSyn packet = new CsSignUpSyn("ÀÌ½ÂÈ¯", "tmdghks", "4521", "940928", "010-2495-7784");
+			CsSignUpSyn packet = new CsSignUpSyn("ÀÌ½ÂÈ¯", "tmdghks", "4521", "940928", "010-2495-7784", "tmdghks123");
 			MyServer.getInstance().sendPacket(packet);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

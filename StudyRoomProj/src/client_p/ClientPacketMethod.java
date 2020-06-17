@@ -1,9 +1,9 @@
 package client_p;
 
-import packet_p.model.EResult;
-import packet_p.model.PacketBase;
-import packet_p.model.Server_p.ack_p.ScLoginAck;
-import packet_p.model.Server_p.ack_p.ScSignInUpAck;
+import packetBase_p.EResult;
+import packetBase_p.PacketBase;
+import server_p.packet_p.ack_p.ScLoginAck;
+import server_p.packet_p.ack_p.ScSignInUpAck;
 
 //클라이언트가 처리할 패킷 메소드 
 
@@ -19,13 +19,6 @@ class MethLoginAck implements ClientPacketMethod {
 		ScLoginAck ack = (ScLoginAck) packet;
 		if (ack.eResult == EResult.SUCCESS) {
 		}
-	}
-}
-
-class MethSignUpSyn implements ClientPacketMethod {
-	@Override
-	public void action(PacketBase packet) {
-
 	}
 }
 

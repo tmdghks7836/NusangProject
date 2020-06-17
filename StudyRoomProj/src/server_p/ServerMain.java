@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.UUID;
 
-import packet_p.*;
-import packet_p.model.PacketBase;
+import packetBase_p.*;
 
 public class ServerMain {
 
@@ -22,7 +21,7 @@ public class ServerMain {
 }
 
 class MyServer {
-
+	
 	// myserver ´Â ½Ì±ÛÅæ
 	private static MyServer instance;
 
@@ -107,7 +106,6 @@ class PacketClient extends Thread {
 
 			try {
 				sleep(1000);
-				//System.out.println(is.available());
 				if (is.available() > 0) {
 					System.out.println("µ¥ÀÌÅÍ µé¾î¿È");
 					pMap.receivePacket(this, (PacketBase) dis.readObject());

@@ -1,6 +1,6 @@
-package product_p.room_p;
+package data_p.product_p.room_p;
 
-import product_p.ProductData;
+import data_p.product_p.ProductData;
 
 public class RoomProduct extends ProductData {
 	

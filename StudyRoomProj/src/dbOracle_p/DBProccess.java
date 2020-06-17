@@ -1,4 +1,4 @@
-package db_p;
+package dbOracle_p;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,12 +29,13 @@ public class DBProccess {
 
 	}
 
-	public ResultSet findData(ETable table, String data) {
+	public ResultSet findData(ETable table, String... data) {
+
+		String query = selectFromWhere(table, data);
 
 		try {
 			reset();
-			ResultSet rs = stmt.executeQuery("select " + data + " from " + table.name);
-			close();
+			ResultSet rs = stmt.executeQuery(query);
 			return rs;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,10 +44,28 @@ public class DBProccess {
 		return null;
 	}
 
+	public boolean haveData(ETable table, String... data) {
+
+		String query = selectFromWhere(table, data);
+		boolean have = false;
+
+		try {
+			reset();
+			have = stmt.execute(query);
+			close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("findTableData is null");
+		return have;
+	}
+
 	public void insertData(ETable table, String key, String values) {
 		try {
 			reset();
-			String data = "insert into " + table.name + "(" + key + ") values " + "(" + values + ")";
+			String data = "insert into " + table.name() + "(" + key + ") values " + "(" + values + ")";
 			System.out.println(data);
 			ResultSet rs = stmt.executeQuery(data);
 			close();
@@ -55,42 +74,50 @@ public class DBProccess {
 		}
 	}
 
-//	public static String keyStr(String... keyArr) {
-//		String keyStr = "";
-//		for (String string : keyArr) {
-//			keyStr += string + ",";
-//		}
-//
-//		return keyStr;
-//	}
+	String selectFromWhere(ETable table, String... data) {
+		String query = "select " + data[0] + " from " + table.name();
+		if (data.length == 2) {
+			query += " where " + data[1];
+		}
+		return query;
+	}
 
 	public static String valueStr(Object... valueArr) {
 		String valueStr = "";
 
 		for (int i = 0; i < valueArr.length; i++) {
 
-			//if (Integer.parseInt(valueArr[i])) {
-				valueStr += "'" + valueArr[i].toString() + "'";
-			//} else {
-			//	valueStr += valueArr[i].toString();
-			//}
-			
+			// if (Integer.parseInt(valueArr[i])) {
+			valueStr += "'" + valueArr[i].toString() + "'";
+			// } else {
+			// valueStr += valueArr[i].toString();
+			// }
+
 			if (i < valueArr.length - 1) {
 				valueStr += ",";
 			}
 		}
-		
+
 		return valueStr;
 	}
 
-	void reset() throws SQLException {
-		con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
-		stmt = con.createStatement();
+	void reset() {
+		try {
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
-	void close() throws SQLException {
-		stmt.close();
-		con.close();
+	public void close() {
+
+		try {
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

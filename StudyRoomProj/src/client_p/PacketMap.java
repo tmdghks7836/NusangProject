@@ -2,9 +2,9 @@ package client_p;
 
 import java.util.HashMap;
 
-import packet_p.model.PacketBase;
-import packet_p.model.Server_p.ack_p.ScLoginAck;
-import packet_p.model.Server_p.ack_p.ScSignInUpAck;
+import packetBase_p.PacketBase;
+import server_p.packet_p.ack_p.ScLoginAck;
+import server_p.packet_p.ack_p.ScSignInUpAck;
 
 public class PacketMap {
 

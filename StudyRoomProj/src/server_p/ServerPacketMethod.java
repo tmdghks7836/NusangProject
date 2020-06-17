@@ -1,14 +1,12 @@
 package server_p;
 
-import packet_p.*;
-import packet_p.model.EResult;
-import packet_p.model.PacketBase;
-import packet_p.model.Server_p.ack_p.ScLoginAck;
-import packet_p.model.Server_p.ack_p.ScSignInUpAck;
-import packet_p.model.client_p.syn_p.CsLoginSyn;
-import packet_p.model.client_p.syn_p.CsSignUpSyn;
-import db_p.DBProccess;
-import db_p.*;
+import server_p.packet_p.ack_p.ScLoginAck;
+import server_p.packet_p.ack_p.ScSignInUpAck;
+import client_p.packet_p.syn_p.CsLoginSyn;
+import client_p.packet_p.syn_p.CsSignUpSyn;
+import dbOracle_p.*;
+import packetBase_p.EResult;
+import packetBase_p.PacketBase;
 
 public interface ServerPacketMethod {
 
@@ -51,12 +49,28 @@ class MethLoginSyn implements ServerPacketMethod {
 class MethSignUpSyn implements ServerPacketMethod {
 
 	public void action(PacketClient client, PacketBase packet) {
-		CsSignUpSyn recPacket = (CsSignUpSyn) packet;
+		try {
+			CsSignUpSyn recPacket = (CsSignUpSyn) packet;
 
-		String key = "name,id,pw,birth,phone";
-		String values = DBProccess.valueStr(recPacket.name, recPacket.id, recPacket.pw, recPacket.birth,
-				recPacket.phone);
-		DBProccess.getInstance().insertData(ETable.ACCOUNT, key, values);
+			String calum = "name,id,pw,birth,phone,ctype";
+
+			String ctype = recPacket.cType;
+
+			boolean res = DBProccess.getInstance().haveData(ETable.MANAGERKEY, "key",
+					"key = '" + recPacket.cType + "'");
+
+			if (res) {
+				ctype = EClientType.MANAGER.name();
+			}
+			DBProccess.getInstance().close();
+			String values;
+
+			values = DBProccess.valueStr(recPacket.name, recPacket.id, recPacket.pw, recPacket.birth, recPacket.phone,
+					ctype);
+			DBProccess.getInstance().insertData(ETable.ACCOUNT, calum, values);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		ScSignInUpAck ack = new ScSignInUpAck(client.uuid, EResult.SUCCESS);
 		client.sendPacket(ack);

@@ -1,10 +1,10 @@
-package product_p;
+package data_p.product_p;
 
 import java.util.ArrayList;
 
-import product_p.room_p.PrivateRoomProduct;
-import product_p.room_p.PublicRoomProduct;
-import product_p.room_p.RoomProduct;
+import data_p.product_p.room_p.PrivateRoomProduct;
+import data_p.product_p.room_p.PublicRoomProduct;
+import data_p.product_p.room_p.RoomProduct;
 
 public class ProductMain {
 
